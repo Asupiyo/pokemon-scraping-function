@@ -45,14 +45,13 @@ def write_to_file(pokemon_rows):
         Bucket='asupiyo',
         Key='pokemon_data.csv',
         Body=csv_buffer.getvalue(),
-        ContentType='text/csv; charset=utf-8'
+        ContentType='text/csv; charset=utf-8',
+        CacheControl='max-age=86400'
     )
-
 
 
 # Press the green button in the gutter to run the script.
 def lambda_handler(event, context):
     write_to_file(scrape())
-
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
