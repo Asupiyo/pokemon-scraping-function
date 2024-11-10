@@ -6,10 +6,11 @@ pwd = os.getcwd()
 print(pwd)
 zfile = rf"{pwd}\lambda_function.zip"
 pfile = rf"{pwd}\pokemon_data_aws\lambda_function.py"
+lfile = rf"{pwd}\venv\Lib\site-packages\*"
 
 
 def create_zip():
-    subprocess.run(['powershell', 'compress-archive', '-Path', pfile, '-Update', '-DestinationPath', zfile])
+    subprocess.run(['powershell', 'compress-archive', '-Path', lfile, ',', pfile, '-Update', '-DestinationPath', zfile])
 
 
 def upload_zip(function_name, zip_file_path):
